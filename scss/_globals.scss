@@ -4,16 +4,21 @@
   box-sizing: border-box;
 }
 
+h1 {
+  text-align: center;
+}
 .board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   position: relative;
-  text-align: center;
+
   background-color: red;
   width: 50vw;
+  height: 60vh;
   margin: auto;
 }
 
-.board div {
+footer {
+  position: absolute;
 }
