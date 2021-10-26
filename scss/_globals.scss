@@ -2,21 +2,56 @@
   padding: 0;
   border: 0;
   box-sizing: border-box;
+
+  // reset
+}
+
+body {
+  background-color: rgba(0, 0, 0, 0.315);
 }
 
 h1 {
   text-align: center;
 }
+
 .board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   position: relative;
-
-  background-color: red;
+  top: 40px;
   width: 50vw;
   height: 60vh;
   margin: auto;
+}
+
+.f1 {
+  @include border-color-style3;
+}
+.f2 {
+  @include border-color-style3;
+}
+
+.f3 {
+  @include border-color-style2;
+}
+
+.f4 {
+  @include border-color-style3;
+}
+
+.f5 {
+  @include border-color-style3;
+}
+
+.f6 {
+  @include border-color-style2;
+}
+.f7 {
+  @include border-color-style4;
+}
+.f8 {
+  @include border-color-style4;
 }
 
 footer {

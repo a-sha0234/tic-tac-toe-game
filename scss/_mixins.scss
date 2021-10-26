@@ -1,0 +1,12 @@
+@mixin border-color-style2 {
+  border-bottom: 5px solid black;
+}
+
+@mixin border-color-style3 {
+  border-bottom: 5px solid black;
+  border-right: 5px solid black;
+}
+
+@mixin border-color-style4 {
+  border-right: 5px solid black;
+}

@@ -5,6 +5,10 @@
           box-sizing: border-box;
 }
 
+body {
+  background-color: rgba(0, 0, 0, 0.315);
+}
+
 h1 {
   text-align: center;
 }
@@ -17,10 +21,46 @@ h1 {
   -ms-grid-rows: (1fr)[3];
       grid-template-rows: repeat(3, 1fr);
   position: relative;
-  background-color: red;
+  top: 40px;
   width: 50vw;
   height: 60vh;
   margin: auto;
+}
+
+.f1 {
+  border-bottom: 5px solid black;
+  border-right: 5px solid black;
+}
+
+.f2 {
+  border-bottom: 5px solid black;
+  border-right: 5px solid black;
+}
+
+.f3 {
+  border-bottom: 5px solid black;
+}
+
+.f4 {
+  border-bottom: 5px solid black;
+  border-right: 5px solid black;
+}
+
+.f5 {
+  border-bottom: 5px solid black;
+  border-right: 5px solid black;
+}
+
+.f6 {
+  border-bottom: 5px solid black;
+}
+
+.f7 {
+  border-right: 5px solid black;
+}
+
+.f8 {
+  border-right: 5px solid black;
 }
 
 footer {
