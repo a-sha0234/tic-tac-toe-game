@@ -3,3 +3,17 @@
   border: 0;
   box-sizing: border-box;
 }
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  position: relative;
+  text-align: center;
+  background-color: red;
+  width: 50vw;
+  margin: auto;
+}
+
+.board div {
+}
