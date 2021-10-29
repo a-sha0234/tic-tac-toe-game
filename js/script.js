@@ -12,48 +12,63 @@ function selector(name) {
 const gameBoard = (() => {
   //module
   const board = [];
+  const winnable = [];
   return { board };
 })();
 
 //handle players turn
 const playerTurn = (() => {
-  const num = 0;
+  //module
+  let num = 0;
   return { num };
 })();
 
-//handle players
-const player1 = () => {
-  //factory
-  const player1 = 0;
-  return { player1 };
+const player = () => {
+  const player1Move = (field) => {
+    const h = field.classList[1];
+    field.classList.add("used");
+    gameBoard.board.push("x");
+    selector(h).innerHTML = `<i class="fas fa-times"></i>`;
+    playerTurn.num++;
+  };
+
+  const player2Move = (field) => {
+    const h = field.classList[1];
+    field.classList.add("used");
+    gameBoard.board.push("o");
+    selector(h).innerHTML = `<i class="far fa-circle"></i>`;
+    playerTurn.num--;
+  };
+
+  let player1Score = 0;
+  let player2Score = 0;
+
+  return { player1Score, player2Score, player1Move, player2Move };
 };
 
-const player2 = () => {
-  //factory
-  const player2 = 0;
-  return { player2 };
-};
+const player1 = player();
+const player2 = player();
 
-// display board
-function renderBoard() {
-  let index = 0;
+// handle events
+function main() {
   gboard.forEach(function (field) {
     field.addEventListener("click", function () {
-      const h = field.classList[1];
-
-      if (playerTurn.num == 0) {
-        gameBoard.board.push("x");
-        selector(h).textContent = gameBoard.board[index];
-        index++;
-        playerTurn.num++;
-      } else if (playerTurn.num == 1) {
-        gameBoard.board.push("o");
-        selector(h).textContent = gameBoard.board[index];
-        index++;
-        playerTurn.num--;
+      if (playerTurn.num == 0 && checkIfOccupied(field) == false) {
+        player1.player1Move(field);
+      } else if (playerTurn.num == 1 && checkIfOccupied(field) == false) {
+        player2.player2Move(field);
       }
     });
   });
 }
 
-renderBoard();
+function checkIfOccupied(field) {
+  // function to check if field is occupied
+  let used = false;
+  if (field.classList.contains("used")) {
+    used = True;
+  }
+  return used;
+}
+
+main();
