@@ -11,9 +11,20 @@ function selector(name) {
 //handle gameboard
 const gameBoard = (() => {
   //module
-  const board = [];
-  const winnable = [];
-  return { board };
+  const board = [[], []];
+  const winnablePositions = [
+    //rows
+    ["f1", "f2", "f3"],
+    ["f4", "f5", "f6"],
+    ["f7", "f8", "f9"],
+    //columns
+    ["f1", "f4", "f7"],
+    ["f2", "f5", "f6"],
+    ["f3", "f6", "f9"],
+    //diagonal
+    ["f3", "f5", "f7"],
+  ];
+  return { board, winnablePositions };
 })();
 
 //handle players turn
@@ -28,7 +39,7 @@ const player = () => {
   const player1Move = (field) => {
     const h = field.classList[1];
     field.classList.add("used");
-    gameBoard.board.push(h);
+    gameBoard.board[0].push(h);
     selector(h).innerHTML = `<i class="fas fa-times"></i>`;
     playerTurn.num++;
   };
@@ -36,7 +47,7 @@ const player = () => {
   const player2Move = (field) => {
     const h = field.classList[1];
     field.classList.add("used");
-    gameBoard.board.push(h);
+    gameBoard.board[1].push(h);
     selector(h).innerHTML = `<i class="far fa-circle"></i>`;
     playerTurn.num--;
   };
@@ -49,12 +60,13 @@ const player = () => {
 const player1 = player(); //each instance is seperate from one another
 const player2 = player();
 
-// handle events
 function main() {
+  // handle events
   gboard.forEach(function (field) {
     field.addEventListener("click", function () {
       if (playerTurn.num == 0 && checkIfOccupied(field) == false) {
         player1.player1Move(field);
+        console.log(gameBoard.board);
       } else if (playerTurn.num == 1 && checkIfOccupied(field) == false) {
         player2.player2Move(field);
       }
