@@ -24,10 +24,11 @@ const playerTurn = (() => {
 })();
 
 const player = () => {
+  // factory function to hold method that each player had
   const player1Move = (field) => {
     const h = field.classList[1];
     field.classList.add("used");
-    gameBoard.board.push("x");
+    gameBoard.board.push(h);
     selector(h).innerHTML = `<i class="fas fa-times"></i>`;
     playerTurn.num++;
   };
@@ -35,18 +36,17 @@ const player = () => {
   const player2Move = (field) => {
     const h = field.classList[1];
     field.classList.add("used");
-    gameBoard.board.push("o");
+    gameBoard.board.push(h);
     selector(h).innerHTML = `<i class="far fa-circle"></i>`;
     playerTurn.num--;
   };
 
-  let player1Score = 0;
-  let player2Score = 0;
+  let playerScore = 0;
 
-  return { player1Score, player2Score, player1Move, player2Move };
+  return { playerScore, player1Move, player2Move };
 };
 
-const player1 = player();
+const player1 = player(); //each instance is seperate from one another
 const player2 = player();
 
 // handle events
@@ -66,8 +66,9 @@ function checkIfOccupied(field) {
   // function to check if field is occupied
   let used = false;
   if (field.classList.contains("used")) {
-    used = True;
+    used = true;
   }
+
   return used;
 }
 
