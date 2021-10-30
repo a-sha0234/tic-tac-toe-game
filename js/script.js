@@ -94,33 +94,19 @@ function checkForWinner() {
   for (let i = 0; i < gameBoard.winnablePositions.length; i++) {
     let pos = gameBoard.winnablePositions[i];
 
-    let h = pos.slice(0, 2);
-    console.log(h);
-
-    // let res = pos.map((item) => {
-    //   return item;
-    // });
-    // console.log(res);
+    if (
+      board.includes(pos[0]) &&
+      board.includes(pos[1]) &&
+      board.includes(pos[2])
+    ) {
+      console.log("Winner");
+    }
+    console.log(pos[0], pos[1], pos[2]);
   }
-
-  //   for (let i = 0; i < gameBoard.winnablePositions.length; i++) {
-  //     for (let j = 0; j < gameBoard.winnablePositions[i].length; j++) {
-  //       let pos = gameBoard.winnablePositions[i][j];
-  //       console.log(pos);
-  //     }
-  //   }
-
-  //   let first_Player = [];
-
-  //   let arr1 = gameBoard.board[0];
-  //   let it = arr1.values();
-
-  //   for (const values of it) {
-  //     first.push(values);
-  //   }
-  //   console.log(first);
-
-  //   for (let i = 0; i < gameBoard.board[0].length; i++) {}
 }
+
+// first loop through the winnerpoitions and get each array into a variables
+//then loop through each index, if each index of the array matched the board array
+// the the game is over
 
 main();
