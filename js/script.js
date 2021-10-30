@@ -66,7 +66,8 @@ function main() {
     field.addEventListener("click", function () {
       if (playerTurn.num == 0 && checkIfOccupied(field) == false) {
         player1.player1Move(field);
-        console.log(gameBoard.board);
+        checkForWinner();
+        //console.log(gameBoard.board);
       } else if (playerTurn.num == 1 && checkIfOccupied(field) == false) {
         player2.player2Move(field);
       }
@@ -82,6 +83,44 @@ function checkIfOccupied(field) {
   }
 
   return used;
+}
+
+function checkForWinner() {
+  let isPlayer1Win = false;
+  let isPlayer2Win = false;
+
+  let board = gameBoard.board[0];
+
+  for (let i = 0; i < gameBoard.winnablePositions.length; i++) {
+    let pos = gameBoard.winnablePositions[i];
+
+    let h = pos.slice(0, 2);
+    console.log(h);
+
+    // let res = pos.map((item) => {
+    //   return item;
+    // });
+    // console.log(res);
+  }
+
+  //   for (let i = 0; i < gameBoard.winnablePositions.length; i++) {
+  //     for (let j = 0; j < gameBoard.winnablePositions[i].length; j++) {
+  //       let pos = gameBoard.winnablePositions[i][j];
+  //       console.log(pos);
+  //     }
+  //   }
+
+  //   let first_Player = [];
+
+  //   let arr1 = gameBoard.board[0];
+  //   let it = arr1.values();
+
+  //   for (const values of it) {
+  //     first.push(values);
+  //   }
+  //   console.log(first);
+
+  //   for (let i = 0; i < gameBoard.board[0].length; i++) {}
 }
 
 main();
