@@ -19,7 +19,7 @@ const gameBoard = (() => {
     ["f7", "f8", "f9"],
     //columns
     ["f1", "f4", "f7"],
-    ["f2", "f5", "f6"],
+    ["f2", "f5", "f8"],
     ["f3", "f6", "f9"],
     //diagonal
     ["f3", "f5", "f7"],
@@ -101,7 +101,6 @@ function checkForWinner() {
     ) {
       console.log("Winner");
     }
-    console.log(pos[0], pos[1], pos[2]);
   }
 }
 
