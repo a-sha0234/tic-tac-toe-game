@@ -6,6 +6,7 @@ const gboard = document.querySelectorAll(".field");
 const message = document.querySelector(".msg");
 const player1Score = document.querySelector("#player1Score");
 const player2Score = document.querySelector("#player2Score");
+const playAgain = document.querySelector(".playagain");
 
 function selector(name) {
   const sel = document.querySelector("." + name);
@@ -76,9 +77,9 @@ function main() {
         player1.player1Move(field);
         if (checkForWinner(0) == true) {
           //check if player 1 has won
-
           message.textContent = "player 1 wins!";
           player1.playerScore++;
+
           updateScore(player1Score, player1, 1);
         }
       } else if (playerTurn.num == 1 && checkIfOccupied(field) == false) {
@@ -129,15 +130,20 @@ function checkForWinner(player) {
   //then loop through each index, if each index of the array matched the board array
   // the the game is over
 }
-
-function Nextgame() {
-  //need to loop through all fields with used class and remove the injected html
-  //need to loop through every field and delete the used class
-  //remove winner message
+function playAgainf() {
+  playAgain.addEventListener("click", function () {
+    gameBoard.board[0].splice(0, gameBoard.board[0].length);
+    gameBoard.board[1].splice(0, gameBoard.board[1].length); //remove fields stored in the board
+    gboard.innerHTML = "";
+  });
 }
+//need to loop through all fields with used class and remove the injected html
+//need to loop through every field and delete the used class
+//remove winner message
 
 function updateScore(player, playerNum, num) {
   player.textContent = "Player " + num + " score: " + playerNum.playerScore;
 }
 
+playAgainf();
 main();
