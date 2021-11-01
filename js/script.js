@@ -65,8 +65,8 @@ const player = () => {
 const player1 = player(); //each instance is seperate from one another
 const player2 = player();
 
-player1Score.textContent = player1.playerScore; //display scores , this is global
-player2Score.textContent = player2.playerScore;
+player1Score.textContent = "Player 1 score: " + player1.playerScore; //display scores , this is global
+player2Score.textContent = "Player 2 score: " + player2.playerScore;
 
 function main() {
   // handle events
@@ -79,7 +79,7 @@ function main() {
 
           message.textContent = "player 1 wins!";
           player1.playerScore++;
-          update(player1Score, player1);
+          updateScore(player1Score, player1, 1);
         }
       } else if (playerTurn.num == 1 && checkIfOccupied(field) == false) {
         player2.player2Move(field);
@@ -88,7 +88,7 @@ function main() {
           //check if player 2 has won
           message.textContent = "player 2 wins!";
           player2.playerScore++;
-          update(player2Score, player2);
+          updateScore(player2Score, player2, 2);
         }
       }
     });
@@ -130,8 +130,14 @@ function checkForWinner(player) {
   // the the game is over
 }
 
-function update(player, playerNum) {
-  player.textContent = playerNum.playerScore;
+function Nextgame() {
+  //need to loop through all fields with used class and remove the injected html
+  //need to loop through every field and delete the used class
+  //remove winner message
+}
+
+function updateScore(player, playerNum, num) {
+  player.textContent = "Player " + num + " score: " + playerNum.playerScore;
 }
 
 main();
