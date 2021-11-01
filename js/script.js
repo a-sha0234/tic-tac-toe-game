@@ -1,7 +1,9 @@
 "use strict";
 
 //selectors
+//globals
 const gboard = document.querySelectorAll(".field");
+const message = document.querySelector(".msg");
 
 function selector(name) {
   const sel = document.querySelector("." + name);
@@ -23,6 +25,7 @@ const gameBoard = (() => {
     ["f3", "f6", "f9"],
     //diagonal
     ["f3", "f5", "f7"],
+    ["f1", "f5", "f9"],
   ];
   return { board, winnablePositions };
 })();
@@ -66,10 +69,17 @@ function main() {
     field.addEventListener("click", function () {
       if (playerTurn.num == 0 && checkIfOccupied(field) == false) {
         player1.player1Move(field);
-        checkForWinner();
-        //console.log(gameBoard.board);
+        if (checkForWinner(0) == true) {
+          //check if player 1 has won
+          message.textContent = "player 1 wins!";
+        }
       } else if (playerTurn.num == 1 && checkIfOccupied(field) == false) {
         player2.player2Move(field);
+
+        if (checkForWinner(1) == true) {
+          //check if player 2 has won
+          message.textContent = "player 2 wins!";
+        }
       }
     });
   });
@@ -85,23 +95,26 @@ function checkIfOccupied(field) {
   return used;
 }
 
-function checkForWinner() {
-  let isPlayer1Win = false;
-  let isPlayer2Win = false;
+function checkForWinner(player) {
+  //function to check if there is a winner
+  let isPlayerWin = false;
 
-  let board = gameBoard.board[0];
+  let board = gameBoard.board[player]; // the board of player 1
 
   for (let i = 0; i < gameBoard.winnablePositions.length; i++) {
+    //loop through each array
     let pos = gameBoard.winnablePositions[i];
 
     if (
-      board.includes(pos[0]) &&
+      board.includes(pos[0]) && //check each winnable combination and see if there is a match
       board.includes(pos[1]) &&
       board.includes(pos[2])
     ) {
       console.log("Winner");
+      isPlayerWin = true;
     }
   }
+  return isPlayerWin;
 }
 
 // first loop through the winnerpoitions and get each array into a variables
