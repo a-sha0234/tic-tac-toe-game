@@ -4,6 +4,8 @@
 //globals
 const gboard = document.querySelectorAll(".field");
 const message = document.querySelector(".msg");
+const player1Score = document.querySelector("#player1Score");
+const player2Score = document.querySelector("#player2Score");
 
 function selector(name) {
   const sel = document.querySelector("." + name);
@@ -63,6 +65,9 @@ const player = () => {
 const player1 = player(); //each instance is seperate from one another
 const player2 = player();
 
+player1Score.textContent = player1.playerScore; //display scores , this is global
+player2Score.textContent = player2.playerScore;
+
 function main() {
   // handle events
   gboard.forEach(function (field) {
@@ -71,7 +76,10 @@ function main() {
         player1.player1Move(field);
         if (checkForWinner(0) == true) {
           //check if player 1 has won
+
           message.textContent = "player 1 wins!";
+          player1.playerScore++;
+          update(player1Score, player1);
         }
       } else if (playerTurn.num == 1 && checkIfOccupied(field) == false) {
         player2.player2Move(field);
@@ -79,6 +87,8 @@ function main() {
         if (checkForWinner(1) == true) {
           //check if player 2 has won
           message.textContent = "player 2 wins!";
+          player2.playerScore++;
+          update(player2Score, player2);
         }
       }
     });
@@ -115,10 +125,13 @@ function checkForWinner(player) {
     }
   }
   return isPlayerWin;
+  // first loop through the winnerpoitions and get each array into a variables
+  //then loop through each index, if each index of the array matched the board array
+  // the the game is over
 }
 
-// first loop through the winnerpoitions and get each array into a variables
-//then loop through each index, if each index of the array matched the board array
-// the the game is over
+function update(player, playerNum) {
+  player.textContent = playerNum.playerScore;
+}
 
 main();
