@@ -9,6 +9,7 @@ const player2Score = document.querySelector("#player2Score");
 const playAgain = document.querySelector(".playagain");
 
 function selector(name) {
+  //function to make selectors
   const sel = document.querySelector("." + name);
   return sel;
 }
@@ -30,12 +31,11 @@ const gameBoard = (() => {
     ["f3", "f5", "f7"],
     ["f1", "f5", "f9"],
   ];
-  return { board, winnablePositions };
+  return { board, winnablePositions }; //public
 })();
 
-//handle players turn
 const playerTurn = (() => {
-  //module
+  //module to handle players turn
   let num = 0;
   return { num };
 })();
@@ -45,9 +45,9 @@ const player = () => {
   const player1Move = (field) => {
     const h = field.classList[1];
     field.classList.add("used");
-    gameBoard.board[0].push(h);
+    gameBoard.board[0].push(h); //push to array in the gameboard for player 1
     selector(h).innerHTML = `<i class="fas fa-times"></i>`;
-    playerTurn.num++;
+    playerTurn.num++; //allows for player 2 turn
   };
 
   const player2Move = (field) => {
@@ -55,7 +55,7 @@ const player = () => {
     field.classList.add("used");
     gameBoard.board[1].push(h);
     selector(h).innerHTML = `<i class="far fa-circle"></i>`;
-    playerTurn.num--;
+    playerTurn.num--; //allows for player 1's turn again
   };
 
   let playerScore = 0;
@@ -73,12 +73,13 @@ function main() {
   // handle events
   gboard.forEach(function (field) {
     field.addEventListener("click", function () {
+      //listen out for click of each field
       if (playerTurn.num == 0 && checkIfOccupied(field) == false) {
         player1.player1Move(field);
         if (checkForWinner(0) == true) {
           //check if player 1 has won
           message.textContent = "player 1 wins!";
-          player1.playerScore++;
+          player1.playerScore++; //add to score of winner
 
           updateScore(player1Score, player1, 1);
         }
@@ -131,6 +132,7 @@ function checkForWinner(player) {
   // the the game is over
 }
 function playAgainf() {
+  // function to allow the user to play again after there is a winner
   playAgain.addEventListener("click", function () {
     gameBoard.board[0].splice(0, gameBoard.board[0].length);
     gameBoard.board[1].splice(0, gameBoard.board[1].length); //remove fields stored in the board
@@ -149,6 +151,7 @@ function playAgainf() {
 //need to loop through all fields with used class and remove the injected html
 
 function updateScore(player, playerNum, num) {
+  //function to update the score when the there is a winner
   player.textContent = "Player " + num + " score: " + playerNum.playerScore;
 }
 
