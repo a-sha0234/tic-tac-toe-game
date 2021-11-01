@@ -12,6 +12,7 @@ body {
 
 h1 {
   text-align: center;
+  font-size: 2.3rem;
 }
 
 .board {
@@ -62,4 +63,32 @@ button {
   padding: 20px;
   cursor: pointer;
   border: 1px solid black;
+}
+
+.score {
+  font-size: 1.5rem;
+}
+
+footer p {
+  width: 100vw;
+  text-align: center;
+}
+
+.msg {
+  color: green;
+  font-size: 2rem;
+  font-weight: bold;
+  position: relative;
+}
+
+.fas {
+  font-size: 10rem;
+  width: 100%;
+  text-align: center;
+}
+
+.far {
+  font-size: 10rem;
+  width: 100%;
+  text-align: center;
 }

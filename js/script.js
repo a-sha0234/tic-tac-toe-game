@@ -136,7 +136,7 @@ function playAgainf() {
     gameBoard.board[1].splice(0, gameBoard.board[1].length); //remove fields stored in the board
     message.textContent = "";
 
-    for (let i = 1; i < 9; i++) {
+    for (let i = 1; i < 10; i++) {
       //remove all fields with the used class and remove the html for the x's and o's
       const sel = document.querySelector(".f" + i);
       sel.innerHTML = "";
