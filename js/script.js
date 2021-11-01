@@ -134,12 +134,19 @@ function playAgainf() {
   playAgain.addEventListener("click", function () {
     gameBoard.board[0].splice(0, gameBoard.board[0].length);
     gameBoard.board[1].splice(0, gameBoard.board[1].length); //remove fields stored in the board
-    gboard.innerHTML = "";
+    message.textContent = "";
+
+    for (let i = 1; i < 9; i++) {
+      //remove all fields with the used class and remove the html for the x's and o's
+      const sel = document.querySelector(".f" + i);
+      sel.innerHTML = "";
+      if (sel.classList.contains("used")) {
+        sel.classList.remove("used");
+      }
+    }
   });
 }
 //need to loop through all fields with used class and remove the injected html
-//need to loop through every field and delete the used class
-//remove winner message
 
 function updateScore(player, playerNum, num) {
   player.textContent = "Player " + num + " score: " + playerNum.playerScore;
