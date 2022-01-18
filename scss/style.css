@@ -28,6 +28,10 @@ h1 {
   margin: auto;
 }
 
+footer {
+  position: absolute;
+}
+
 .f1 {
   border-bottom: 5px solid black;
   border-right: 5px solid black;
@@ -62,10 +66,6 @@ h1 {
 
 .f8 {
   border-right: 5px solid black;
-}
-
-footer {
-  position: absolute;
 }
 
 button {

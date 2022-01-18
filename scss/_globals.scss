@@ -2,7 +2,6 @@
   padding: 0;
   border: 0;
   box-sizing: border-box;
-
   // reset
 }
 
@@ -25,7 +24,11 @@ h1 {
   height: 60vh;
   margin: auto;
 }
+footer {
+  position: absolute;
+}
 
+//style grid
 .f1 {
   @include border-color-style3;
 }
@@ -53,10 +56,6 @@ h1 {
 }
 .f8 {
   @include border-color-style4;
-}
-
-footer {
-  position: absolute;
 }
 
 button {
