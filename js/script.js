@@ -1,7 +1,9 @@
 "use strict";
 
-//selectors
-//globals
+//---------------------------------------------------------------------------------
+// global selectors
+//---------------------------------------------------------------------------------
+
 const gboard = document.querySelectorAll(".field");
 const message = document.querySelector(".msg");
 const player1Score = document.querySelector("#player1Score");
@@ -13,6 +15,10 @@ function selector(name) {
   const sel = document.querySelector("." + name);
   return sel;
 }
+
+//---------------------------------------------------------------------------------
+// module to hand gameboard and players turn
+//---------------------------------------------------------------------------------
 
 //handle gameboard
 const gameBoard = (() => {
@@ -39,6 +45,10 @@ const playerTurn = (() => {
   let num = 0;
   return { num };
 })();
+
+//---------------------------------------------------------------------------------
+// handle players moves and create instances
+//---------------------------------------------------------------------------------
 
 const player = () => {
   // factory function to hold method that each player had
@@ -69,6 +79,10 @@ const player2 = player();
 player1Score.textContent = "Player 1 score: " + player1.playerScore; //display scores , this is global
 player2Score.textContent = "Player 2 score: " + player2.playerScore;
 
+//---------------------------------------------------------------------------------
+// make players moves
+//---------------------------------------------------------------------------------
+
 function main() {
   // handle events
   gboard.forEach(function (field) {
@@ -96,6 +110,10 @@ function main() {
     });
   });
 }
+
+//---------------------------------------------------------------------------------
+// functions to check if move is valid and if the player wins
+//---------------------------------------------------------------------------------
 
 function checkIfOccupied(field) {
   // function to check if field is occupied
@@ -131,6 +149,10 @@ function checkForWinner(player) {
   //then loop through each index, if each index of the array matched the board array
   // the the game is over
 }
+
+//---------------------------------------------------------------------------------
+// reset game
+//---------------------------------------------------------------------------------
 function playAgainf() {
   // function to allow the user to play again after there is a winner
   playAgain.addEventListener("click", function () {
