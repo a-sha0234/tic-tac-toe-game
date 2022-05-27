@@ -1,7 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz@8..144&display=swap");
+
 * {
   padding: 0;
   border: 0;
   box-sizing: border-box;
+  font-family: "Roboto Flex", sans-serif;
   // reset
 }
 
@@ -61,7 +64,13 @@ footer {
 button {
   padding: 20px;
   cursor: pointer;
-  border: 1px solid black;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.2rem;
+}
+button:hover {
+  background-color: black;
+  color: white;
 }
 
 .score {
